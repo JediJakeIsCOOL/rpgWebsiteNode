@@ -38,7 +38,7 @@ const bcrypt = require('bcryptjs');
 
 
 // app.use(require("./routes/index"));
-app.use(require("./routes/stocks"));
+app.use(require("./routes/random"));
 // app.use(require("./routes/stocklist"));
 // app.use(require("./routes/api"))
 app.use(require("./routes/login"))
@@ -48,6 +48,7 @@ app.use(require('./routes/logout'))
 app.use(require('./routes/enemies'))
 app.use(require('./routes/highscores'))
 app.use(require('./routes/screenshots'))
+app.use(require('./routes/howtoplay'))
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');

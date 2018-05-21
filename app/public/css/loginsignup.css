@@ -10,14 +10,16 @@ body{
     font-size: 100px;
     -webkit-text-stroke: .5px black;
     line-height: 5px;
+    margin-bottom: 75px;
     /* height: 35px; */
 }
 .signup-container{
-    background-color: white;
+    background: rgba(0, 0, 0, .7);
     max-width: 30%;
     display: block;
     margin: auto;
     border-radius: 15px;
+    border: solid white 2px;
 }
 .signup-title{
     color: #27FB6B;
@@ -37,6 +39,8 @@ body{
     margin: auto;
     margin-top: 50px;
     border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Cinzel', serif;
     
 }
 .pswrd, .e-mail{
@@ -47,6 +51,8 @@ body{
     display: block;
     margin: auto;
     border-radius: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Cinzel', serif;
 }
 .submit{
     display: block;
@@ -56,7 +62,8 @@ body{
     height:25px;
     background-color: white;
     font-size: 16px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Cinzel', serif;
     font-weight: 300;
     border-radius: 5px;
     border: black 2px solid;
@@ -68,7 +75,9 @@ body{
     text-decoration: none;
     padding-bottom: 30px;
     font-size: 20px;
-    color: black;
+    color: goldenrod;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Cinzel', serif;
 }
 
 
