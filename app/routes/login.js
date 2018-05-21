@@ -11,7 +11,7 @@ const promise = require('bluebird');
 const config = {
     host: 'localhost',
     port: 5432,
-    database: 'stocks',
+    database: 'rpg',
     user: 'postgres'
 };
 const initOptions = {
@@ -29,7 +29,7 @@ router.use(session({
     resave: true,
     saveUninitialized: true,
     store: new (require('connect-pg-simple')(session))({conObject: config}),
-    cookie: {maxAge: 300000}
+    cookie: {maxAge: 2000000}
     
 
 }));
@@ -41,10 +41,19 @@ router.get('/login', function(req, res){
     res.render('login')
 
 })
+// router.post('/login',
+//   passport.authenticate('local'),
+//   function(req, res) {
+//     // If this function gets called, authentication was successful.
+//     // `req.user` contains the authenticated user.
+//     res.redirect('/userPage/' + req.user.username);
+//   });
+
 
 router.post('/login',
-  passport.authenticate('local', { successRedirect: '/userPage',
-                                   failureRedirect: '/login'})
+  passport.authenticate('local',  { successRedirect: '/userPage',
+                                   failureRedirect: '/login',
+                                   })
 );
 
 passport.use(new LocalStrategy((username, password, done) => {
@@ -52,10 +61,11 @@ passport.use(new LocalStrategy((username, password, done) => {
         
         if(results != null) {
             const data = results[0]
+            // console.log(results[0])
             bcrypt.compare(password, data.password, function(err, res) {
                 if(res) {
-                    console.log("Hello world")
-                    console.log(data)
+                    // console.log("Hello world")
+                    // console.log(data)
                     done(null, { id: data.id, username: data.username})
                 } else {
                     console.log("Returned nothing")

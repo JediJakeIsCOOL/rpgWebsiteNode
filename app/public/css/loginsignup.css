@@ -1,6 +1,7 @@
 body{
     background-color: #0A2E36;
     font-family: 'Cute Font', cursive;
+    background-image: url(../images/mainpage/RPG_Background1.png);
 }
 .eatTheComp{
     color: #27FB6B;
@@ -53,7 +54,7 @@ body{
     margin-top: 20px;
     width: 255px;;
     height:25px;
-    background-color: #27FB6B;
+    background-color: white;
     font-size: 16px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 300;

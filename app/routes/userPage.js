@@ -3,7 +3,7 @@ var router = express.Router();
 var promise = require('bluebird');
 var pgp = require('pg-promise')(options);
 
-var connectionString = 'postgres://localhost:5432/stocks';
+var connectionString = 'postgres://localhost:5432/rpg';
 var db = pgp(connectionString);
 
 var bodyParser = require('body-parser');
@@ -26,27 +26,30 @@ router.get('/userPage',function(req,res){
     var symbol = req.body.stock_symbol
     
     var user= req.user.username
+    if (req.isAuthenticated() === null){
+        res.redirect('/login')
+    }
     
-    db.any('SELECT * FROM stocks').then(function(data){
+    db.any('SELECT * FROM users').then(function(data){
 
         // res.render(page to render, object to pass to the page)
         res.render('userPage',{
             pageTitle: "User's Page",
 
-            stocks : data,
-            user : user,
-            stocks : data
+            
+            user : user
+            
         });
     })
 })
 
 router.post('/userPage',function(req,res){
     (function() {
-        console.log("Submitted")
+        // console.log("Submitted")
         var symbol = req.body.stock_symbol;
         var userId = "Testing";
         // Retreives individual stock prices
-        console.log(symbol);
+        // console.log(symbol);
         var currentdate = new Date();
         var datetime = currentdate.getFullYear() + "/"
             + (currentdate.getMonth()+1)  + "/"
@@ -54,7 +57,7 @@ router.post('/userPage',function(req,res){
             + currentdate.getHours() + ":"
             + currentdate.getMinutes() + ":"
             + currentdate.getSeconds();
-        console.log(datetime);
+        // console.log(datetime);
 
         fetch(url + symbol + url2 + apiKey)
             .then(res => res.json())
@@ -67,9 +70,9 @@ router.post('/userPage',function(req,res){
                 var stockPrice = timeSeries15[currentDateData]["4. close"];
                 var timeZone = stockData["Meta Data"]["6. Time Zone"]
                 var currentDate = currentDateData.substring(0, 10);
-                console.log(currentDate);
-                console.log(stockPrice);
-                console.log(currentDateData + " " + timeZone)
+                // console.log(currentDate);
+                // console.log(stockPrice);
+                // console.log(currentDateData + " " + timeZone)
                 // .catch(err => console.error(err));
 
                 // Insert data retrieved from API into database

@@ -7,7 +7,7 @@ var options = {
     promiseLib : promise
 }
 var pgp = require('pg-promise')(options);
-var connectionString = 'postgres://localhost:5432/stocks';
+var connectionString = 'postgres://localhost:5432/rpg';
 //might need to change database name in order to merge
 var db = pgp(connectionString);
 var bodyParser = require('body-parser');
